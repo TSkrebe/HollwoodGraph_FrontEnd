@@ -1,6 +1,6 @@
 import { Ng2StartPage } from './app.po';
 
-describe('ng2-start App', function() {
+describe('HollywoodGraph_FrontEnd App', function() {
   let page: Ng2StartPage;
 
   beforeEach(() => {
