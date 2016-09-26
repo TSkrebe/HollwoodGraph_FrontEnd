@@ -1,0 +1,40 @@
+<div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="outer-input">
+
+                <input list="results1" type="text" class="form-control" placeholder="Select personality!"
+                       [(ngModel)]="person1_str" (keyup.enter)="searchForCollaborations()"  (keyup)="keyup_person1()">
+                <datalist id="results1">
+                    <option *ngFor="let item of items | async" value="{{item}}"></option>
+                </datalist>
+            </div>
+            <app-person-info [person]="person1"></app-person-info>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group outer-input">
+
+                <input list="results2" type="text" class="form-control" placeholder="Select personality!"
+                       [(ngModel)]="person2_str" (keyup.enter)="searchForCollaborations()"
+                        (keyup)="keyup_person2()">
+                <datalist id="results2">
+                    <option *ngFor="let item of items | async" value="{{item}}"></option>
+                </datalist>
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-default" (click)="searchForCollaborations()">Go!</button>
+                    </span>
+            </div>
+            <app-person-info [person]="person2"></app-person-info>
+        </div>
+    </div>
+    <hr/>
+    <div *ngIf="person1 != null">
+        <h3><strong>{{person1.id}}</strong> and <strong>{{person2.id}}</strong>
+            has collaborated on <strong>{{movies.length}}</strong> movie<span *ngIf="movies.length != 1">s</span>:</h3>
+        <ul class="list-unstyled">
+            <li *ngFor="let movie of movies; let i = index;"><h4>{{i+1}}. <strong>{{movie.id}}</strong></h4></li>
+        </ul>
+    </div>
+    <app-graph [s_graph]="graph"></app-graph>
+</div>
+

@@ -1,0 +1,13 @@
+<div class="media" *ngIf="movie != null">
+    <div class="pull-left">
+        <img [src]="movie_url" alt="movie-poster" width="120px">
+    </div>
+    <div class="media-body">
+        <h3 class="media-heading"><strong>{{movie.title}}</strong></h3>
+        <p><strong>Genre:</strong> {{movie.genre}}</p>
+        <p><strong>Release date:</strong> {{movie.releaseDate | date: "yMMMMd" }}</p>
+        <p><strong>Runtime:</strong> {{movie.runtime}}m</p>
+        <p><strong>Description:</strong> {{movie.description}}</p>
+
+    </div>
+</div>

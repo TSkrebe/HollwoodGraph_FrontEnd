@@ -1,0 +1,39 @@
+{
+  "nodes": [
+    {
+      "id": "Interstellar",
+      "group": "movie"
+    },
+    {
+      "id": "Martian",
+      "group": "movie"
+    },
+    {
+      "id": "Memento",
+      "group": "movie"
+    },
+    {
+      "id": "Christian Nolan",
+      "name": "Christian Nolan",
+      "moviedb_id": 525,
+      "group": "director",
+      "birthplace": "New Jersey, U.S",
+      "biography": "Leonardo Wilhelm DiCaprio (born November 11, 1974) is an American actor and film producer. His first role was on the sitcom Growing Pains, but his breakthrough film performance",
+      "birthday": "267058800000"
+    }
+  ],
+  "links": [
+    {
+      "source": "Interstellar",
+      "target": "Christian Nolan"
+    },
+    {
+      "source": "Christian Nolan",
+      "target": "Memento"
+    },
+    {
+      "source": "Christian Nolan",
+      "target": "Martian"
+    }
+  ]
+}

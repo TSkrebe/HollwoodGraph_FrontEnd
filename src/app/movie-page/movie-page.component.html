@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-md-4">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Summary</a></li>
+            <li><a data-toggle="tab" href="#crew">Crew</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <app-movie-info [movie]="movie">Loading...</app-movie-info>
+            </div>
+            <div id="crew" class="tab-pane fade">
+                <div *ngIf="crew != null">
+                <ul class="list-unstyled">
+                    <li *ngFor="let member of crew"><strong>{{member.name}}</strong> as {{member.role}}</li>
+                </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="col-md-6 outer-input">
+            <div class="input-group ">
+                <input list="results" type="text" class="form-control" placeholder="Search for movie!" #term
+                       (keyup)="search(term.value)" (keyup.enter)="searchMovie()" [(ngModel)]="movie_str">
+                <datalist id="results">
+                    <option *ngFor="let item of items | async" value="{{item}}"></option>
+                </datalist>
+
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="searchMovie()">Go!</button>
+                </span>
+
+            </div>
+        </div>
+        <div class="col-md-6"></div>
+
+        <app-graph [s_graph]="graph"></app-graph>
+
+    </div>
+</div>

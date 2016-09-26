@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-md-4">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Biography</a></li>
+            <li><a data-toggle="tab" href="#menu1">Filmography</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <app-person-info [person]="person">Loading...</app-person-info>
+            </div>
+            <div id="menu1" class="tab-pane fade">
+                <div *ngIf="movies != null" class="list">
+                    <ul class="list-unstyled">
+                        <li *ngFor="let movie of movies; let i = index;"><h5>{{i+1}}. <strong>{{movie.id}}</strong></h5>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-8">
+        <div class="col-md-6 outer-input">
+            <div class="input-group ">
+                <input list="results" type="text" class="form-control" placeholder="Search for a personality!"
+                       #term (keyup)="search(term.value)" (keyup.enter)="searchPerson()" [(ngModel)]="person_str">
+                <datalist id="results">
+                    <option *ngFor="let item of items | async" value="{{item}}"></option>
+                </datalist>
+
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="searchPerson()">Go!</button>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-6"></div>
+        <app-graph [s_graph]="graph"></app-graph>
+
+    </div>
+</div>

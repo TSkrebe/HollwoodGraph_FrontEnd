@@ -1,0 +1,72 @@
+{
+  "graph": {
+    "nodes": [
+      {
+        "id": "Interstellar",
+        "group": "movie"
+      },
+      {
+        "id": "Martian",
+        "group": "movie"
+      },
+      {
+        "id": "Memento",
+        "group": "movie"
+      },
+      {
+        "id": "Christian Nolan",
+        "name": "Christian Nolan",
+        "moviedb_id": 525,
+        "group": "director",
+        "birthplace": "New Jersey, U.S",
+        "biography": "Leonardo Wilhelm DiCaprio (born November 11, 1974) is an American actor and film producer. His first role was on the sitcom Growing Pains, but his breakthrough film performance",
+        "birthday": "267058800000"
+      },
+      {
+        "id": "Eastwood",
+        "name": "Eastwood",
+        "group": "director",
+        "moviedb_id": 190,
+        "birthplace": "San Francisco, California, U.S.",
+        "biography": "is an American actor, filmmaker, musician, and political figure. After earning success in the Western TV series Rawhide, he rose to international fame with his role as",
+        "birthday": "-55505044"
+      }
+    ],
+    "links": [
+      {
+        "source": "Interstellar",
+        "target": "Christian Nolan"
+      },
+      {
+        "source": "Christian Nolan",
+        "target": "Memento"
+      },
+      {
+        "source": "Christian Nolan",
+        "target": "Martian"
+      },
+      {
+        "source": "Eastwood",
+        "target": "Memento"
+      },
+      {
+        "source": "Eastwood",
+        "target": "Martian"
+      }
+    ]
+  },
+  "movies": [
+    {
+      "id": "Interstellar",
+      "group": "movie"
+    },
+    {
+      "id": "Martian",
+      "group": "movie"
+    },
+    {
+      "id": "Memento",
+      "group": "movie"
+    }
+  ]
+}

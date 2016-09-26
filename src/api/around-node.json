@@ -1,0 +1,34 @@
+{
+  "nodes": [
+    {
+      "id": "Interstellar",
+      "group": "movie"
+    },
+    {
+      "id": "Martian",
+      "group": "movie"
+    },
+    {
+      "id": "Memento",
+      "group": "movie"
+    },
+    {
+      "id": "Christian Nolan",
+      "group": "director"
+    }
+  ],
+  "links": [
+    {
+      "source": "Interstellar",
+      "target": "Christian Nolan"
+    },
+    {
+      "source": "Christian Nolan",
+      "target": "Memento"
+    },
+    {
+      "source": "Christian Nolan",
+      "target": "Martian"
+    }
+  ]
+}

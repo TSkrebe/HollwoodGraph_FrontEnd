@@ -1,0 +1,12 @@
+.well, button{
+    border-radius: 0;
+}
+.well ul{
+    list-style: none;
+    font-size: 25px;
+    padding: 0;
+}
+
+h3{
+    margin-top: 0;
+}

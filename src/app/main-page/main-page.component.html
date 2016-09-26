@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-md-3">
+        <h3>What's in the graph?</h3>
+        <div class="well">
+            <ul>
+                <li>{{stats.movie_count}} <strong>Movies</strong></li>
+                <li>{{stats.director_count}} <strong>Directors</strong></li>
+                <li>{{stats.actor_count}} <strong>Actors</strong></li>
+                <li>{{stats.role_count}} <strong>Roles</strong></li>
+            </ul>
+        </div>
+        <div>
+            <svg >
+                <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" ></circle>
+            </svg>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <h3>
+            <span>Explore the graph</span>
+            <button class="btn btn-default pull-right" (click)="generateRandom()">GENERATE NEW</button>
+        </h3>
+        <app-graph [s_graph]="graph"></app-graph>
+    </div>
+</div>

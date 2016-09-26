@@ -1,0 +1,43 @@
+{
+  "nodes": [
+    {
+      "id": "Giovanni",
+      "group": "actor"
+    },
+    {
+      "id": "Laz Alonso",
+      "group": "actor"
+    },
+    {
+      "id": "Wes Studi",
+      "group": "actor"
+    },
+    {
+      "id": "Avatar",
+      "title": "Avatar",
+      "description": "Disabled Marine Jake Sully travels to planet Pandora to become an avatar, ingratiate himself with the natives and help Americans mine lucrative unobtainium. But he finds himself in an interstellar conflict after falling for Na'vi warrior Neytiri",
+      "group": "movie",
+      "genre": "Action",
+      "runtime": 162,
+      "moviedb_id": "19995",
+      "releaseDate": "1261090800000"
+    }
+  ],
+  "links": [
+    {
+      "source": "Giovanni",
+      "target": "Avatar",
+      "role": "god"
+    },
+    {
+      "source": "Laz Alonso",
+      "target": "Avatar",
+      "role": "johny"
+    },
+    {
+      "source": "Wes Studi",
+      "target": "Avatar",
+      "role": "kkd"
+    }
+  ]
+}

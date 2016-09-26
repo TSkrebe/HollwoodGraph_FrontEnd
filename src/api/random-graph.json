@@ -1,0 +1,37 @@
+{
+  "nodes": [
+    {
+      "id": "Giovanni",
+      "group": "actor"
+    },
+    {
+      "id": "Laz Alonso",
+      "group": "actor"
+    },
+    {
+      "id": "Avatar",
+      "group": "movie"
+    },
+    {
+      "id": "Wes Studi",
+      "group": "actor"
+    }
+  ],
+  "links": [
+    {
+      "source": "Giovanni",
+      "target": "Avatar",
+      "role": "god"
+    },
+    {
+      "source": "Laz Alonso",
+      "target": "Avatar",
+      "role": "johny"
+    },
+    {
+      "source": "Wes Studi",
+      "target": "Avatar",
+      "role": "kkd"
+    }
+  ]
+}
