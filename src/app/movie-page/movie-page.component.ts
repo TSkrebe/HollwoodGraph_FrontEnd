@@ -38,7 +38,6 @@ export class MoviePageComponent implements OnInit {
     }
 
     movie_error = (status) =>{
-        console.log("status ", status);
         if (status == 0){
             this.status_message = "Cannot reach the server";
         }else{
@@ -51,7 +50,6 @@ export class MoviePageComponent implements OnInit {
         this.actors = [];
         this.directors = [];
         for (let link of data.links) {
-            console.log("role:", link.role + "|");
             if (link.source === this.movie.id) {
                 if(link.role == null){
                     this.directors.push(link.target)
@@ -66,8 +64,6 @@ export class MoviePageComponent implements OnInit {
                 }
             }
         }
-        console.log(this.directors);
-        console.log(this.actors);
         this.graph = data;
         this.status_message = "";
     };
@@ -79,7 +75,6 @@ export class MoviePageComponent implements OnInit {
 
     searchMovie() {
         this.findMovie();
-        console.log("search", this.movie_str);
     }
 
     items: Observable<string[]> = this.searchTermStream

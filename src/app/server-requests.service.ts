@@ -13,21 +13,21 @@ export class ServerRequestsService {
 
     constructor(private http: Http) { }
     //
-    stats_url = 'http://localhost:8000/api/stats';
-    search_url = 'http://localhost:8000/api/search/';
-    random_graph_url = 'http://localhost:8000/api/random-graph';
-    around_movie = 'http://localhost:8000/api/around-movie/';
-    around_person = 'http://localhost:8000/api/around-person/';
-    around_node = 'http://localhost:8000/api/around-node/';
-    collaborations = 'http://localhost:8000/api/collaborations/';
-    //
-    // stats_url = 'api/stats';
-    // search_url = 'api/search/';
-    // random_graph_url = 'api/random-graph';
-    // around_movie = 'api/around-movie/';
-    // around_person = 'api/around-person/';
-    // around_node = 'api/around-node/';
-    // collaborations = 'api/collaborations/';
+    // stats_url = 'http://localhost:8000/api/stats';
+    // search_url = 'http://localhost:8000/api/search/';
+    // random_graph_url = 'http://localhost:8000/api/random-graph';
+    // around_movie = 'http://localhost:8000/api/around-movie/';
+    // around_person = 'http://localhost:8000/api/around-person/';
+    // around_node = 'http://localhost:8000/api/around-node/';
+    // collaborations = 'http://localhost:8000/api/collaborations/';
+
+    stats_url = 'api/stats';
+    search_url = 'api/search/';
+    random_graph_url = 'api/random-graph';
+    around_movie = 'api/around-movie/';
+    around_person = 'api/around-person/';
+    around_node = 'api/around-node/';
+    collaborations = 'api/collaborations/';
 
     getStats() : Observable<Stats>{
         return this.http.get(this.stats_url)
