@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import {PersonInfoComponent} from "./shared/person-info/person-info.component";
@@ -34,7 +35,7 @@ import { CollaborationPageComponent } from './collaboration-page/collaboration-p
     HttpModule,
     routing
   ],
-  providers: [ServerRequestsService, D3Service],
+  providers: [ServerRequestsService, D3Service, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

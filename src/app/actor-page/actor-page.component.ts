@@ -12,47 +12,63 @@ import 'rxjs/add/operator/switchMap';
 })
 export class ActorPageComponent implements OnInit {
 
-    constructor(private serverRequestsService: ServerRequestsService) {
-    }
 
-    private person: any;
-    private movies: any;
-
+    private person;
+    private movies = [];
+    private directed = [];
     private person_str: string = "Leonardo DiCaprio";
     private searchTermStream = new Subject<string>();
 
+    private searched_str: string;
+    private status_message: string;
+
+    constructor(private serverRequestsService: ServerRequestsService) {
+    }
+
     ngOnInit() {
-
-        //random actor
         this.findPerson();
-
     }
 
     private findPerson() {
+        this.searched_str = this.person_str;
         this.serverRequestsService.getAroundPerson(this.person_str)
-            .subscribe(this.server_response);
+            .subscribe(this.server_response, this.error_response);
     }
 
     server_response = (data) => {
         //find person node
         this.person = data.person;
-
-        let movies = [];
+        this.directed = [];
+        this.movies = [];
         for (let link of data.links) {
             if (link.source === this.person.id) {
-                movies.push({id: link.target, group: link.role})
+                if (link.role == null) {
+                    this.directed.push(link.target);
+                } else {
+                    this.movies.push({id: link.target, role: link.role})
+                }
             } else {
-                movies.push({id: link.source, group: link.role})
+                if (link.role == null) {
+                    this.directed.push(link.source);
+                } else {
+                    this.movies.push({id: link.target, role: link.role})
+                }
             }
         }
 
-        this.movies = movies;
         this.graph = data;
 
     };
 
-    searchPerson(){
-        console.log(this.person_str);
+    error_response = (status) => {
+        if(status == 0){
+            this.status_message = "Cannot reach the server";
+        }else{
+            this.status_message = "No actor named " + this.searched_str + " was found";
+        }
+    };
+
+    searchPerson() {
         this.findPerson();
     }
 

@@ -8,26 +8,26 @@ import {Stats} from "../classes/stats";
     styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent implements OnInit {
-    stats: Stats;
+
+    private stats: Stats;
+    private graph;
 
     constructor(private serverRequestService: ServerRequestsService) {
     }
-    graph;
+
     ngOnInit() {
 
         this.stats = this.serverRequestService
             .getStats()
             .subscribe((stats: Stats) => this.stats = stats);
 
-        console.log("EHHEHEHEHHEHEHEH");
         this.generateRandom();
 
     }
 
-    generateRandom(){
+    generateRandom() {
         this.serverRequestService
             .getRandomGraph()
             .subscribe(graph => this.graph = graph);
-        console.log("GENERATE NEW")
     }
 }

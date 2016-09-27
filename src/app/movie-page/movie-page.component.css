@@ -10,3 +10,7 @@ hr{
 ul{
     list-style: none;
 }
+.list{
+    max-height: 500px;
+    overflow: auto;
+}

@@ -10,12 +10,14 @@ import {Input} from "@angular/core/src/metadata/directives";
 })
 export class MovieInfoComponent implements OnInit, OnChanges {
 
+    @Input() movie: Movie;
+    private default_url = "assets/default-poster.jpg";
+    private movie_url = "assets/default-poster.jpg";
+
+
     constructor(private serverRequestsService: ServerRequestsService) {
     }
 
-    @Input() movie: Movie;
-    private default_url = "movie.jpg";
-    private movie_url = "movie.jpg";
 
     ngOnInit() {
         console.log(this.movie);
@@ -32,7 +34,7 @@ export class MovieInfoComponent implements OnInit, OnChanges {
 
     image_return = (data) => {
         let path = data.poster_path;
-        if(path == null){
+        if (path == null) {
             this.movie_url = this.default_url;
         }
         this.movie_url = "http://image.tmdb.org/t/p/w185" + path;

@@ -9,10 +9,21 @@
                 <app-movie-info [movie]="movie">Loading...</app-movie-info>
             </div>
             <div id="crew" class="tab-pane fade">
-                <div *ngIf="crew != null">
-                <ul class="list-unstyled">
-                    <li *ngFor="let member of crew"><strong>{{member.name}}</strong> as {{member.role}}</li>
-                </ul>
+                <div class="list">
+                    <div *ngIf="directors.length">
+                        <h3><strong>Directors:</strong></h3>
+                        <ul class="list-unstyled">
+                            <li *ngFor="let dir of directors"><strong>{{dir}}</strong></li>
+                        </ul>
+                    </div>
+                    <div *ngIf="actors.length">
+                        <h3><strong>Actors:</strong></h3>
+                        <ul class="list-unstyled">
+                            <li *ngFor="let actor of actors"><strong>{{actor.name}}</strong> as
+                                <strong>{{actor.role}}</strong></li>
+                        </ul>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -32,7 +43,9 @@
 
             </div>
         </div>
-        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            <p class="text-danger"><strong>{{status_message}}</strong></p>
+        </div>
 
         <app-graph [s_graph]="graph"></app-graph>
 

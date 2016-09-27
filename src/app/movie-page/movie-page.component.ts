@@ -18,9 +18,11 @@ export class MoviePageComponent implements OnInit {
     private movie: Movie;
     private movie_str: string = "The Matrix";
     private graph;
+    private actors = [];
+    private directors: string[] = [];
+    private status_message: string;
 
-    private crew;
-
+    private searched_str: string;
     constructor(private serverRequestsService: ServerRequestsService) {
     }
 
@@ -29,26 +31,45 @@ export class MoviePageComponent implements OnInit {
     }
 
     findMovie() {
-        this.serverRequestsService.getAroundMovie(this.movie_str)
-            .subscribe(this.server_response);
+        this.searched_str = this.movie_str;
+        this.serverRequestsService
+            .getAroundMovie(this.movie_str)
+            .subscribe(this.server_response, this.movie_error);
     }
 
+    movie_error = (status) =>{
+        console.log("status ", status);
+        if (status == 0){
+            this.status_message = "Cannot reach the server";
+        }else{
+            this.status_message = "No movie called " + this.searched_str + " was found";
+        }
+    };
     server_response = (data) => {
-
-        let crew = [];
         //find movie node
         this.movie = data.movie;
-
+        this.actors = [];
+        this.directors = [];
         for (let link of data.links) {
+            console.log("role:", link.role + "|");
             if (link.source === this.movie.id) {
-                crew.push({name: link.target, role: link.role})
+                if(link.role == null){
+                    this.directors.push(link.target)
+                }else{
+                    this.actors.push({name: link.target, role: link.role})
+                }
             } else {
-                crew.push({name: link.source, role: link.role})
+                if(link.role == null){
+                    this.directors.push(link.source)
+                }else{
+                    this.actors.push({name: link.source, role: link.role})
+                }
             }
         }
-        this.crew = crew;
+        console.log(this.directors);
+        console.log(this.actors);
         this.graph = data;
-
+        this.status_message = "";
     };
 
     search(term: string) {

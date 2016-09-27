@@ -9,11 +9,23 @@
                 <app-person-info [person]="person">Loading...</app-person-info>
             </div>
             <div id="menu1" class="tab-pane fade">
-                <div *ngIf="movies != null" class="list">
-                    <ul class="list-unstyled">
-                        <li *ngFor="let movie of movies; let i = index;"><h5>{{i+1}}. <strong>{{movie.id}}</strong></h5>
-                        </li>
-                    </ul>
+                <div class="list">
+                    <div *ngIf="directed.length">
+                        <h3><strong>Directed:</strong></h3>
+                        <ul class="list-unstyled">
+                            <li *ngFor="let dir of directed">
+                                <strong>{{dir}}</strong>
+                            </li>
+                        </ul>
+                    </div>
+                    <div *ngIf="movies.length">
+                        <h3><strong>Acted in:</strong></h3>
+                        <ul class="list-unstyled">
+                            <li *ngFor="let movie of movies">
+                                <strong>{{movie.id}}</strong> as <strong>{{movie.role}}</strong>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -33,7 +45,9 @@
                 </span>
             </div>
         </div>
-        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            <p class="text-danger"><strong>{{status_message}}</strong></p>
+        </div>
         <app-graph [s_graph]="graph"></app-graph>
 
     </div>

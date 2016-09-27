@@ -11,13 +11,13 @@ import {Input} from "@angular/core/src/metadata/directives";
 export class PersonInfoComponent implements OnChanges {
 
     @Input() person: Person;
-    private default_url = "default-profile.jpg";
-    private picture_url = "default-profile.jpg";
+    private default_url = "assets/default-profile.jpg";
+    private picture_url = "assets/default-profile.jpg";
 
     constructor(private serverRequestsService: ServerRequestsService) {
     }
 
-    ngOnChanges(){
+    ngOnChanges() {
         if (this.person != null) {
             let moviedb_id = this.person.moviedb_id;
             let url = "https://api.themoviedb.org/3/person/" + moviedb_id + "/images?api_key=d4d78a6e08d09913f70499a86c58e426";
@@ -25,9 +25,9 @@ export class PersonInfoComponent implements OnChanges {
         }
     }
 
-    image_return = (data)  => {
+    image_return = (data) => {
         let path = data.profiles[0];
-        if(path == null){
+        if (path == null) {
             this.picture_url = this.default_url;
             return;
         }

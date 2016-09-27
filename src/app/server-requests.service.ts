@@ -12,7 +12,7 @@ import {Movie} from "./classes/movie";
 export class ServerRequestsService {
 
     constructor(private http: Http) { }
-
+    //
     stats_url = 'http://localhost:8000/api/stats';
     search_url = 'http://localhost:8000/api/search/';
     random_graph_url = 'http://localhost:8000/api/random-graph';
@@ -20,7 +20,7 @@ export class ServerRequestsService {
     around_person = 'http://localhost:8000/api/around-person/';
     around_node = 'http://localhost:8000/api/around-node/';
     collaborations = 'http://localhost:8000/api/collaborations/';
-
+    //
     // stats_url = 'api/stats';
     // search_url = 'api/search/';
     // random_graph_url = 'api/random-graph';
@@ -52,7 +52,8 @@ export class ServerRequestsService {
 
     getAroundMovie(movie_title: string){
         return this.http.get(this.around_movie + movie_title)
-            .map(response => response.json());
+            .map(response => response.json())
+            .catch(this.handleError);
     }
 
     getAroundPerson(person_name: string){
@@ -70,6 +71,7 @@ export class ServerRequestsService {
         return this.http.get(this.collaborations + first + '/' + second)
             .map(response => response.json());
     }
+
     getPersonImage(url: string){
         return this.http.get(url)
             .map(response => response.json());
@@ -80,16 +82,8 @@ export class ServerRequestsService {
             .map(response => response.json());
     }
     private handleError (error: any) {
-        // In a real world app, we might use a remote logging infrastructure
-        // We'd also dig deeper into the error to get a better message
-        console.log("my error");
         console.log(error);
-        console.log("my message");
-        console.log(error._body.message);
-        let errMsg = (error.message) ? error.message :
-            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-        console.error(errMsg); // log to console instead
-        return Observable.throw(errMsg);
+        return Observable.throw(error.status);
     }
     getRandomGraph(){
         return this.http.get(this.random_graph_url)

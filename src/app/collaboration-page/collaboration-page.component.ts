@@ -15,9 +15,6 @@ import 'rxjs/add/operator/switchMap';
 })
 export class CollaborationPageComponent implements OnInit {
 
-    constructor(private serverRequestsService: ServerRequestsService) {
-    }
-
     person1: Person;
     person2: Person;
 
@@ -25,6 +22,10 @@ export class CollaborationPageComponent implements OnInit {
     person2_str: string = "Samuel L. Jackson";
 
     movies: Movie[] = [];
+
+
+    constructor(private serverRequestsService: ServerRequestsService) {
+    }
 
     ngOnInit() {
         this.collaborations();
@@ -56,7 +57,6 @@ export class CollaborationPageComponent implements OnInit {
 
     searchForCollaborations(){
         this.collaborations();
-        console.log(this.person1_str, " ", this.person2_str);
     }
 
     keyup_person1(){
